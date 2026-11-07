@@ -3,9 +3,9 @@ name: code-annotate-and-commit
 description: >-
   Requires Chinese logic comments on every API/method call (including English
   third-party libraries) and outputs Conventional Commit messages like
-  feat:小球算法优化. Use when writing or editing code, wrapping library APIs,
-  finishing a coding task, committing, or when the user asks for 备注、注释、
-  commit 说明、提交说明.
+  feat:小球算法优化. Supports any commit type. Use when writing or editing code,
+  wrapping library APIs, finishing a coding task, committing, or when the user
+  asks for 备注、注释、commit 说明、提交说明.
 ---
 
 # 代码备注 + Git Commit 说明
@@ -66,9 +66,27 @@ def process_frame(self, frame):
 <type>:<中文摘要>
 ```
 
-- `type`：`feat` | `fix` | `refactor` | `docs` | `chore` | `test` | `perf`
+**能支持任何类型 git 提交**：`type` 不限制死枚举。常用推荐：
+
+| type | 用途 |
+|------|------|
+| `feat` | 新功能 |
+| `fix` | 缺陷修复 |
+| `refactor` | 重构（无行为变化） |
+| `perf` | 性能优化 |
+| `docs` | 文档 |
+| `style` | 格式/空格（无逻辑变化） |
+| `test` | 测试 |
+| `build` | 构建 / 依赖 |
+| `ci` | CI 配置 |
+| `chore` | 杂项维护 |
+| `revert` | 回滚 |
+
+也允许项目自定义 type（如 `wip`、`release`、`data`），只要是小写英文单词 + 冒号 + 中文摘要。
+
 - 冒号后直接跟中文，**无空格也可**（与用户示例一致）
 - 摘要短、说清「为什么 / 做了什么」
+- 可选 scope：`feat(tracker):橙色球连续跟踪`
 
 ### 示例
 
@@ -88,11 +106,20 @@ docs:补充数据集与训练说明
 chore:忽略本地摄像头调试截图
 ```
 
+```text
+data:扩充小球训练集标注
+```
+
+```text
+ci:添加训练流水线
+```
+
 ### 用户要求提交时
 
-1. 先给出上述格式的 commit 说明
-2. 再用该说明执行 `git commit`（遵循仓库 git 安全规则）
-3. 需要推送时再 `git push`
+1. 先给出上述格式的 commit 说明（按改动选任意合适 type）
+2. 再用该说明执行 `git commit`（遵循仓库 git 安全规则：不改 git config、不强制推送等）
+3. 用户明确要求推送时再 `git push`
+4. **任何类型的改动**（功能 / 修复 / 文档 / 数据 / CI / 杂项）都可以提交，不要因 type 不在常用表而拒绝提交
 
 ---
 
