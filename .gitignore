@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+runs/
+*.pt
+*.cache
+
+# Local camera / debug captures
+cam*.jpg
+live_*.jpg
+capture_*.jpg
+test*.jpg
+debug_*.jpg
+verify_*.jpg
+cont_*.jpg
+fix*.jpg
+stuck_*.jpg
+tune_*.jpg

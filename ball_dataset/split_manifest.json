@@ -1,0 +1,22 @@
+{
+  "source": "/Users/hua/Downloads/project/ros2/labels/images_to_label",
+  "seed": 42,
+  "train_ratio": 0.7,
+  "splits": {
+    "train": [
+      "ball_0008.jpg",
+      "ball_0004.jpg",
+      "ball_0003.jpg",
+      "ball_0009.jpg",
+      "ball_0006.jpg",
+      "ball_0007.jpg",
+      "ball_0010.jpg",
+      "ball_0005.jpg"
+    ],
+    "val": [
+      "ball_0001.jpg",
+      "ball_0002.jpg",
+      "ball_0203.jpg"
+    ]
+  }
+}

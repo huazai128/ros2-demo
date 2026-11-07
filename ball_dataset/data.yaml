@@ -1,0 +1,6 @@
+path: "/Users/hua/Downloads/project/ros2-demo/ball_dataset"
+train: images/train
+val: images/val
+
+names:
+  0: ball
