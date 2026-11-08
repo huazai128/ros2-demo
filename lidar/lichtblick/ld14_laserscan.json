@@ -1,0 +1,77 @@
+{
+  "configById": {
+    "3D!ld14": {
+      "cameraState": {
+        "distance": 8,
+        "perspective": true,
+        "phi": 0.8,
+        "thetaOffset": 0,
+        "targetOffset": [0, 0, 0],
+        "fovy": 0.75,
+        "near": 0.01,
+        "far": 5000
+      },
+      "followMode": "follow-pose",
+      "followTf": "base_laser",
+      "scene": {
+        "enableStats": false,
+        "labelScaleFactor": 1,
+        "ignoreGlobalFixedFrame": false
+      },
+      "transforms": {
+        "frame:base_link": { "visible": true },
+        "frame:base_laser": { "visible": true }
+      },
+      "topics": {
+        "/scan": {
+          "visible": true,
+          "colorMode": "flat",
+          "flatColor": "#00ff66",
+          "pointSize": 4,
+          "pointShape": "circle",
+          "decayTime": 0
+        },
+        "/tf": { "visible": true }
+      },
+      "layers": {},
+      "publish": {
+        "type": "point",
+        "poseTopic": "/move_base_simple/goal",
+        "pointTopic": "/clicked_point",
+        "poseEstimateTopic": "/initialpose",
+        "poseEstimateXDeviation": 0.5,
+        "poseEstimateYDeviation": 0.5,
+        "poseEstimateThetaDeviation": 0.26179939
+      },
+      "imageMode": {}
+    },
+    "RawMessages!scan": {
+      "topicPath": "/scan",
+      "diffEnabled": false,
+      "diffMethod": "custom",
+      "diffTopicPath": "",
+      "showDiff": false,
+      "diffAddColor": "rgba(69, 255, 69, 1)",
+      "diffDeleteColor": "rgba(255, 69, 69, 1)",
+      "fontSize": 12
+    },
+    "DiagnosticSummary!a": {
+      "minLevel": 0,
+      "pinnedIds": [],
+      "topicToRender": "/diagnostics",
+      "hardwareIdFilter": "",
+      "openLevel": 2
+    }
+  },
+  "globalVariables": {},
+  "userNodes": {},
+  "playbackConfig": {
+    "speed": 1
+  },
+  "layout": {
+    "direction": "row",
+    "first": "3D!ld14",
+    "second": "RawMessages!scan",
+    "splitPercentage": 72
+  }
+}

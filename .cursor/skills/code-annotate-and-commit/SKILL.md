@@ -125,4 +125,11 @@ ci:添加训练流水线
 
 ## 本仓库说明
 
-本 skill 位于 `.cursor/skills/`，与个人全局 skill 同步约束本仓库 AI 改动。
+本 skill 位于 `.cursor/skills/`，约束整个 `ros2-demo` 仓库 AI 改动。
+
+子目录单独维护、共享本 skill：
+
+- `camera/`：摄像头跟踪与训练
+- `lidar/`：LD14P 雷达与可视化
+
+改任一子目录代码时，同样必须中文逻辑备注，并输出 Conventional Commit 说明。

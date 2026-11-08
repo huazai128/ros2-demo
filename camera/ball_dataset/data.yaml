@@ -1,0 +1,7 @@
+# YOLO 数据集根目录：相对本机 camera/ball_dataset 的绝对路径
+path: "/home/hua/Downloads/project/ros2-demo/camera/ball_dataset"
+train: images/train
+val: images/val
+
+names:
+  0: ball

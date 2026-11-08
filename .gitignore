@@ -1,10 +1,15 @@
 .venv/
+camera/.venv/
 __pycache__/
 *.pyc
 .DS_Store
 runs/
+camera/runs/
 *.pt
 *.cache
+*.log
+*.bag
+*.mcap
 
 # Local camera / debug captures
 cam*.jpg
