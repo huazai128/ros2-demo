@@ -22,3 +22,6 @@ cont_*.jpg
 fix*.jpg
 stuck_*.jpg
 tune_*.jpg
+
+# Keil 安装包超过 GitHub 100MB 限制，本地保留不入库
+小车开发资料/**/keil安装包/
