@@ -1,0 +1,10 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "comm.h": "c",
+        "string": "c",
+        "string_view": "c",
+        "array": "c",
+        "functional": "c"
+    }
+}

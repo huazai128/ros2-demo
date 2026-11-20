@@ -1,0 +1,9 @@
+<launch>
+  <arg name="lidar_frame" default="laser_link"/>  
+  <arg name="lidar_type"  default="$(env CODBOTLIDAR)" />
+
+  <!-- launch laser -->
+  <include file="$(find codbot_base)/launch/lidar/$(arg lidar_type).launch">
+        <arg name="lidar_frame"            value="$(arg lidar_frame)"/>
+  </include>
+</launch>

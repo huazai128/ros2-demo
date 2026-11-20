@@ -1,0 +1,13 @@
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_Printf.c
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_Include.h
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_Type.h
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_Config.h
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_Common.h
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_Menu.h
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_Printf.h
+zboard_democode1\solgui_printf.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdarg.h
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_GBasic.h
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_Picture.h
+zboard_democode1\solgui_printf.o: ..\Core\Gui\SOLGUI_Widget.h
+zboard_democode1\solgui_printf.o: ..\Core\Font\Font6x8_ASCII.h
+zboard_democode1\solgui_printf.o: ..\Core\Font\Font8x10_ASCII.h

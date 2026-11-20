@@ -1,0 +1,55 @@
+<launch>
+    <!--robot bast type use different tf value-->
+    <arg name="base_type"       default="$(env BASE_TYPE)" />
+    <!-- robot frame -->
+    <arg name="base_frame"       default="base_footprint" />    
+    <arg name="camera_type"       default="$(env CAMERA_TYPE)" />   
+    <arg name="camera_frame" default="camera_link"/>  
+
+	<group if="$(eval camera_type == 'let520')">
+		<include file="$(find codbot_base)/launch/camera/$(arg camera_type).launch"/>
+        <group if="$(eval base_type == 'A100')">
+            <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_camera" 
+                args="0.110 0.0 0.00 0.0 0.0 0.0 $(arg base_frame) $(arg camera_frame) 2z0">
+            </node>
+        </group>
+        <group if="$(eval base_type == 'T100')">
+            <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_camera"
+                args="0.110 0.0 0.00 0.0 0.0 0.0 $(arg base_frame) $(arg camera_frame) 20">
+            </node>
+        </group>
+        <group if="$(eval base_type == 'D100')">
+            <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_camera"
+                args="0.110 0.0 0.00 0.0 0.0 0.0 $(arg base_frame) $(arg camera_frame) 20">
+            </node>
+        </group>
+        <group if="$(eval base_type == 'M100')">
+            <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_camera"
+                args="0.110 0.0 0.00 0.0 0.0 0.0 $(arg base_frame) $(arg camera_frame) 20">
+            </node>
+        </group>
+    </group>
+    <group if="$(eval camera_type == 'astrapro')">
+		<include file="$(find astrapro_launch)/launch/$(arg camera_type).launch"/>
+        <group if="$(eval base_type == 'A100')">
+            <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_camera" 
+                args="0.110 0.0 0.00 0.0 0.0 0.0 $(arg base_frame) $(arg camera_frame) 2z0">
+            </node>
+        </group>
+        <group if="$(eval base_type == 'T100')">
+            <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_camera"
+                args="0.110 0.0 0.00 0.0 0.0 0.0 $(arg base_frame) $(arg camera_frame) 20">
+            </node>
+        </group>
+        <group if="$(eval base_type == 'D100')">
+            <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_camera"
+                args="0.110 0.0 0.00 0.0 0.0 0.0 $(arg base_frame) $(arg camera_frame) 20">
+            </node>
+        </group>
+        <group if="$(eval base_type == 'M100')">
+            <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_camera"
+                args="0.110 0.0 0.00 0.0 0.0 0.0 $(arg base_frame) $(arg camera_frame) 20">
+            </node>
+        </group>
+    </group>
+</launch>

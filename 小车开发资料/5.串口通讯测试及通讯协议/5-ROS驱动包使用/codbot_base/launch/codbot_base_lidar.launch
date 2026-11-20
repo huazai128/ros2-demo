@@ -1,0 +1,8 @@
+<launch>
+  <!-- codbot base -->
+  <include file="$(find codbot_base)/launch/codbot_base.launch"/>
+
+  <!-- launch laser -->
+  <include file="$(find codbot_base)/launch/codbot_lidar.launch"/>
+
+</launch>
