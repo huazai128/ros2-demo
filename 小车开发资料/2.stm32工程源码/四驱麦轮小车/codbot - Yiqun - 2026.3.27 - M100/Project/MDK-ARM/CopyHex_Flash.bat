@@ -1,1 +1,0 @@
-copy .\Objects\project.hex   C:\Users\aisimba\Desktop\清扫车程序\烧录文件\PowerManagement_11_06\project.hex

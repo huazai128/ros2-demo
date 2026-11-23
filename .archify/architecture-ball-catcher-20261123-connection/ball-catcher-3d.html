@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>接球小车 · 3D 系统连接图</title>
+<style>
+:root{color-scheme:dark;--bg:#090f19;--card:#101b2b;--border:#24354a;--text:#e8f1fb;--muted:#9dafc4;--cyan:#47daeb;--orange:#ffaf66;--green:#91e5b0;--purple:#c6acff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif}main{max-width:1600px;margin:auto;padding:32px}header{display:flex;justify-content:space-between;gap:24px;align-items:center}h1{font-size:32px;margin:4px 0 10px;letter-spacing:.02em}h2{font-size:21px;margin:0 0 12px}h3{font-size:16px;margin:0 0 8px}p{margin:8px 0}.eyebrow{font:12px ui-monospace,monospace;letter-spacing:.18em;color:var(--cyan)}.muted{color:var(--muted)}.tag{border:1px solid var(--border);padding:6px 12px;border-radius:24px;font-size:12px;white-space:nowrap}.intro{max-width:960px}.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 12px;align-items:center}button,select{font:inherit;color:var(--text);background:#162438;border:1px solid #34465f;border-radius:8px;padding:8px 13px;cursor:pointer}button:hover,button.active{background:#214758;border-color:var(--cyan)}button:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}.toolbar .space{flex:1}.viewer-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:14px}.scene{position:relative;min-width:0;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:radial-gradient(ellipse at 50% 55%,#192b40,#0d1725 72%)}#scene{width:100%;height:650px;display:block;touch-action:none;cursor:grab}#scene:active{cursor:grabbing}.hint{position:absolute;left:18px;top:14px;color:var(--muted);font-size:12px;pointer-events:none}.legend{display:flex;gap:17px;flex-wrap:wrap;padding:12px 18px;background:#0d1725;border-top:1px solid var(--border);font-size:12px}.dot{display:inline-block;width:18px;height:3px;margin-right:6px;vertical-align:middle}.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;min-width:0}.side{display:flex;flex-direction:column;gap:14px}.side .card:first-child{flex:1}.nodebadge{display:inline-block;padding:3px 8px;background:#26374d;color:var(--cyan);font:12px ui-monospace,monospace;border-radius:5px}.note{border-left:3px solid var(--orange);padding:8px 12px;background:#231e1c;color:#f7d9ba;font-size:13px;margin-top:16px}.detail-line{border-top:1px solid var(--border);padding:9px 0;font-size:13px}.detail-line b{color:var(--cyan)}.mini{font-size:13px}.sections{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-top:20px}.span{grid-column:1/-1}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;font-weight:600;color:var(--muted);background:#152235}td,th{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}td:first-child{white-space:nowrap;color:var(--cyan)}.table-wrap{overflow-x:auto}code{color:#b6ecdf;font-family:ui-monospace,monospace}ol,ul{padding-left:22px;margin:8px 0}li{margin:7px 0}.flow{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap}.flow div{flex:1;min-width:130px;border:1px solid var(--border);padding:12px;border-radius:9px}.flow b{display:block;color:var(--cyan)}a{color:var(--cyan)}footer{padding:22px 0;color:var(--muted);font-size:12px}svg text{font-family:inherit;user-select:none}label{font-size:13px;color:var(--muted)}.select-row{display:flex;gap:8px;align-items:center;margin-top:12px}.select-row select{width:100%;font-size:13px}.pill{color:var(--orange)}@media(max-width:1000px){main{padding:18px}.viewer-grid{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr}#scene{height:560px}.sections{grid-template-columns:1fr}.span{grid-column:auto}h1{font-size:26px}}@media(max-width:600px){main{padding:12px}header{display:block}.tag{display:inline-block;margin-top:8px}.side{grid-template-columns:1fr}#scene{height:430px}.toolbar .space{display:none}h1{font-size:24px}td,th{padding:8px}.toolbar button{padding:7px 9px;font-size:13px}}@media print{body{background:white;color:#152235}main{padding:0}.toolbar,.hint,.select-row{display:none}.viewer-grid{display:block}#scene{height:550px}.side{display:block}.card{background:white;color:#152235;break-inside:avoid}.sections{display:block}.card{margin:12px 0}.muted,footer{color:#456}.scene{background:#152235}table{font-size:11px}th{background:#edf2f7;color:#234}}
+</style></head><body><main>
+<header><div><div class="eyebrow">BALL CATCHER / SYSTEM CONNECTIONS / V1</div><h1>接球小车 · 3D 系统连接图</h1><p class="intro muted">视觉预测接球点，LD14P 约束可行驶区域，独立控制器闭环驱动四轮。Mac 只负责开发与监看。</p></div><span class="tag">概念接线 · 不按比例 · 非针脚施工图</span></header>
+<div class="toolbar" role="group" aria-label="图层与视角"><button class="active" data-layer="all">全部连接</button><button data-layer="data">通信与反馈</button><button data-layer="power">供电与急停</button><span class="space"></span><button id="explode" aria-pressed="false">展开部件</button><button id="top">俯视</button><button id="reset">复位视角</button><button id="export">导出 SVG</button></div>
+<div class="viewer-grid"><div class="scene"><div class="hint">拖动旋转 · 滚轮缩放 · 点击部件突出相关连线 · + / − 缩放</div><svg id="scene" viewBox="0 0 1100 760" tabindex="0" role="img" aria-label="接球小车可旋转三维示意图，方向键旋转，点击部件查看接线"></svg><div class="legend"><span><i class="dot" style="background:var(--cyan)"></i>数据／控制</span><span><i class="dot" style="background:var(--orange)"></i>供电正极／正轨</span><span><i class="dot" style="background:var(--green)"></i>电机输出／反馈</span><span><i class="dot" style="background:var(--purple)"></i>无线／可选调试</span><span class="muted">回流线见供电表；空中虚线为球轨迹示意</span></div></div>
+<aside class="side"><section class="card"><span class="nodebadge" id="detailId">01 / 主计算机</span><h2 id="detailTitle" style="margin-top:12px">香橙派 Zero 3W</h2><p id="detailText"></p><div id="detailLinks"></div><div class="select-row"><label for="parts">部件</label><select id="parts" aria-label="选择部件"></select></div></section><section class="card"><h3>本图的设计假设</h3><p class="mini muted">四轮麦克纳姆底盘＋固定软网接球篮。轮毂、电机、减速比、电池、驱动器与控制器尚未选型；这里只定义模块之间的连接。</p><div class="note">LD14P 仅承担基础避障，不把它当作空中高速球的可靠预探测器。球速与制动距离决定小车允许的运行速度。</div></section></aside></div>
+<div class="sections"><section class="card span"><h2>01 / 通信接线清单</h2><p class="muted mini">线号与 3D 图中的线号对应。点击任一部件可只突出其相关连线。端口名称为逻辑接口，具体针脚必须按实物手册确认。</p><div class="table-wrap"><table><thead><tr><th>线号</th><th>从 → 到</th><th>线材／协议</th><th>接线要点</th></tr></thead><tbody id="dataRows"></tbody></table></div></section>
+<section class="card span"><h2>02 / 电源与急停清单</h2><p class="mini muted">电源线图仅画正极／正轨；所有非隔离信号接口需有公共参考地。电机大电流回路回到配电端，不能经过香橙派或传感器地线。</p><div class="table-wrap"><table><thead><tr><th>线号</th><th>供电路径</th><th>要求</th></tr></thead><tbody id="powerRows"></tbody></table></div></section>
+<section class="card"><h2>03 / 接球控制流程</h2><div class="flow"><div><b>① 观察</b>相机采集时间戳与小球位置</div><div><b>② 预测</b>估计接球点与到达时间</div><div><b>③ 约束</b>雷达避障＋底盘运动能力</div><div><b>④ 执行</b>控制器闭环调速四轮</div></div><p class="mini muted">编码器与 IMU 用于估计车体运动；相机／雷达到车体的安装位置需要标定。控制指令过期、通信失联或急停时进入停车状态。失去球踪迹后不盲目高速追赶。</p><div class="note">摄像头 120/200fps 是商品标称模式，不是整机响应速度。必须实测曝光、传输、解码、预测、下发与机械运动的总延迟。</div></section>
+<section class="card"><h2>04 / 接口分配与施工边界</h2><ul class="mini"><li><b>高速 USB：</b>香橙派数据口 → 自供电 USB 3.0 集线器 → 摄像头与雷达 USB-UART。集线器应明确防上游反灌电，摄像头实际协商速率需验证。</li><li><b>UART-A：</b>主机与电机控制器之间的专用 UART；具体可用针脚、复用和电平待确认。若无独立可用 UART，可改用集线器上的独立 USB-UART。</li><li><b>UART-DBG：</b>Mac 调试串口，必须与 UART-A 分开。只接 TX/RX/GND，不接适配器 VCC。</li><li><b>雷达 UART：</b>LD14P 标称 230400bps；先确认电平和线序，不能把 5V 供电当成 UART 电平。</li><li><b>电机：</b>图示假设有刷直流减速电机，驱动器有 4 个独立 H 桥通道。若选无刷／集成伺服，驱动及通信需重画。</li></ul></section>
+<section class="card"><h2>05 / 开机验证顺序</h2><ol class="mini"><li>脱离主板检查各电源输出、电压极性、共地和保险丝；安装前核对完整针脚表。</li><li>先不接电机负载，启动香橙派，验证串口、Wi-Fi、SSH。</li><li>确认摄像头支持模式、USB 3.0 速率和持续采集不掉线；验证雷达数据。</li><li>架空车轮，逐个确认电机方向、编码器计数、急停及失联停车。</li><li>低速地面测试全向运动与制动，再标定传感器坐标。</li><li>先以软球、低球速与空旷隔离区域测试预测和接球，逐步提高速度。</li></ol></section>
+<section class="card"><h2>06 / 已确认与待选清单</h2><p class="mini"><b>用户资料已确认：</b>AR0234 UVC USB 3.0 摄像头、LD14P、Mac、USB4 数据线。主板按图片识别为 A733 Zero 3W，采购前核对实际型号。</p><p class="mini"><b>设计建议，待选：</b>四轮麦克纳姆底盘、带编码器减速电机 ×4、4 通道驱动、微控制器（如 STM32）、IMU、自供电 USB 3.0 集线器、雷达转接板、DC-DC、电池保护与急停组件。</p><p class="mini"><b>充电接口：</b>使用匹配电池串数与化学体系的充电器，接 BMS 指定充电端；端口与接线在电池选型后确定。不能用 USB4 线的“240W”标注推断可给动力电池充电。</p><p class="mini"><b>暂不确定：</b>电池串数／电压、电机堵转电流、保险丝额定值、DC-DC 容量、控制器接口电平与实际针脚、底盘尺寸和接球篮尺寸。</p><p class="mini muted">依据：用户提供的主板、摄像头和 LD14P 参数图。未验证实物功耗与端口配置；所有布局为建议。参考：<a href="https://www.wch.cn/products/CH343.html">CH343 驱动资料</a> · <a href="https://ideasonboard.org/uvc/">Linux UVC 驱动</a>。</p></section></div><footer>离线独立 HTML · 无外部脚本依赖 · 2026-11-23 · 三维位置与轨迹为示意，不用于机械加工或预测性能。使用浏览器打开；连接表可打印。</footer><noscript><p>交互图需要 JavaScript。请启用脚本查看部件与连接清单。</p></noscript>
+</main><script>
+// 所有坐标均为示意单位；x 为左右、y 为车头方向、z 为高度。
+const nodes=[
+{id:'opi',name:'香橙派 Zero 3W',short:'01 香橙派',p:[-73,-4,82],s:[66,44,10],c:'#2b83bd',group:'compute',desc:'视觉检测、轨迹预测与避障约束。摄像头数据在车上处理，Mac 不进入实时控制闭环。TF 卡装入该板；具体 UART 引脚与复用需核对。'},
+{id:'cam',name:'AR0234 USB 摄像头',short:'02 AR0234 摄像头',p:[-118,120,150],s:[44,22,34],c:'#237f8d',group:'sense',desc:'面向来球方向，避免接球篮遮挡镜头。优先使用短曝光及充足照明；支持 UVC 不代表所有高帧率模式均已验证。镜头接口与视场待实物确认。'},
+{id:'lidar',name:'LD14P 避障雷达',short:'03 LD14P',p:[105,100,108],s:[54,54,28],c:'#45556b',shape:'cylinder',group:'sense',desc:'二维扫描，标称默认 6Hz、UART 230400bps、5V 供电。扫描平面应避开底盘、线束及网篮遮挡。只作为基础避障，不能保证发现空中高速小球。'},
+{id:'hub',name:'自供电 USB 3.0 集线器',short:'04 USB 3.0 HUB',p:[-97,-70,85],s:[70,27,14],c:'#385b78',group:'compute',desc:'建议新增。上游接主板 USB 数据口，下游接相机与雷达适配器。需明确防反灌、供电能力、端口带宽；自供电端按厂商规定接入。'},
+{id:'adapt',name:'雷达 USB-UART 适配器',short:'05 雷达转接',p:[30,65,80],s:[40,24,10],c:'#2b7b80',group:'compute',desc:'建议使用 LD14P 配套转接板。若用通用 USB-UART，仅传信号并共地；雷达由合适的 5V 电源供电，不从弱电适配器 VCC 勉强取电。'},
+{id:'mcu',name:'运动控制器（待选）',short:'06 运动控制器',p:[65,-44,81],s:[64,43,12],c:'#257a66',group:'control',desc:'如 STM32 控制板。闭环调速、编码器采集、IMU 读取、指令超时停车与驱动使能。需至少适配 4 路电机控制和相应编码器输入。'},
+{id:'imu',name:'IMU（可集成）',short:'07 IMU',p:[8,-26,82],s:[20,20,7],c:'#39a397',group:'control',desc:'固定在车体刚性位置，测量角速度／加速度；可集成在控制器上。总线与供电电平按实际模块选择，结合编码器估计车体运动。'},
+{id:'driver',name:'四路电机驱动（待选）',short:'08 四路驱动',p:[75,-100,35],s:[73,40,15],c:'#886c46',group:'base',desc:'按有刷直流减速电机设计的 4 个独立 H 桥通道，可由两块双路驱动实现。电压和持续／峰值电流需按负载、堵转电流与散热选型。逻辑供电可由独立稳压器或模块内部产生，按手册接线。'},
+{id:'battery',name:'动力电池＋BMS',short:'09 电池＋BMS',p:[0,-58,22],s:[95,76,27],c:'#765133',group:'base',desc:'电池电压、容量与放电能力待电机选型。采用与电芯体系匹配的保护／BMS和充电器；充电入口按电池保护板手册，充电时禁用运动。'},
+{id:'fuse',name:'总保险／总开关／配电',short:'10 总开关配电',p:[-85,-95,30],s:[45,32,17],c:'#a47539',group:'base',desc:'电池正极近端先接保险，再接总开关和配电。分为电子设备支路与动力支路，各支路按负载配置保护；负极在配电端汇合。'},
+{id:'buck',name:'电子设备稳压与分配',short:'11 DC-DC 稳压',p:[-85,8,30],s:[60,45,18],c:'#b38543',group:'base',desc:'提供主板稳定 5V、传感器／集线器所需电源及控制器电源。主板支路按 5V/3A 要求，整个电源容量还需叠加相机、雷达、风扇等峰值。必要时采用多个独立稳压支路。'},
+{id:'estop',name:'急停＋动力切断执行器',short:'12 急停／接触器',p:[-150,-120,83],s:[32,32,30],c:'#d64f50',shape:'cylinder',group:'control',desc:'急停按钮控制合适的接触器或驱动安全使能，切断动力输出；图示动力支路经过切断执行器，不让普通按钮直接承受电机大电流。需处理失电滑行及制动要求；恢复后不得自动起步。'},
+{id:'fan',name:'散热风扇／散热片',short:'13 散热',p:[-74,0,111],s:[30,30,12],c:'#526d87',shape:'cylinder',group:'compute',desc:'固定在主板散热组件上。风扇额定电压、功耗和插头待确认，若接板载风扇接口，须核对其额定能力。'},
+{id:'basket',name:'软网接球篮（概念）',short:'14 接球篮',p:[15,24,180],s:[145,120,65],c:'#60778d',shape:'basket',group:'catch',desc:'图示固定软网篮，通过底盘平移对准接球点，不含独立抓手或机械臂。位置、开口、缓冲和重心需依据球与底盘设计；不可遮挡相机或雷达。'},
+{id:'mac',name:'Mac 开发电脑',short:'15 Mac／SSH',p:[-355,-60,24],s:[100,68,9],c:'#627b97',group:'external',desc:'通过同一局域网 SSH 登录香橙派；串口仅用于首次配网和故障排查。Mac 不承担实时接球计算，避免无线延迟进入运动闭环。'},
+{id:'debug',name:'Mac USB 转串口（可选）',short:'16 调试串口',p:[-260,-136,30],s:[48,21,10],c:'#8764a5',group:'external',desc:'USB 接 Mac，TX/RX 交叉连接主板独立调试 UART，GND 共地，VCC 不接。与雷达适配器分开，也不能占用主机与运动控制器的通信 UART。'}
+];
+// 生成四个独立电机／编码器组件，轮位在电气清单中明确区分。
+const wheelDefs=[['fl','左前',-166,100],['fr','右前',166,100],['rl','左后',-166,-95],['rr','右后',166,-95]];
+for(const [id,name,x,y] of wheelDefs){
+ // 添加独立轮端，用于驱动与反馈连线定位。
+ nodes.push({id,name:name+'电机＋编码器',short:name+'轮／编码器',p:[x,y,18],s:[32,65,53],c:'#39465a',shape:'wheel',group:'base',desc:'概念：带编码器的直流减速电机＋麦克纳姆轮。每轮独立驱动、独立反馈；滚子方向与轮位需匹配，控制方向要架空验证。'});
+}
+// 通信边与电源边共享线号、端点和说明，确保图与清单保持一致。
+const edges=[
+['D01','opi','hub','data','USB 3.0 上游','接主板 Type-C 数据口，不是独立供电口；线材和集线器需支持 USB 3.0。'],
+['D02','hub','cam','data','USB 3.0 / UVC','双向 USB 数据及 VBUS；摄像头由自供电集线器供电，实际相机插座需匹配。'],
+['D03','hub','adapt','data','USB / 串口设备','适配器枚举为独立串口；USB 同时给适配器供电。'],
+['D04','adapt','lidar','data','UART / 230400bps','雷达 TX → 适配器 RX、GND 共地；RX／其他控制脚按雷达手册。不能猜线色、电平。'],
+['D05','opi','mcu','data','专用 UART-A / 双向','TX↔RX 交叉、GND 共地；电平匹配或加转换器。发送速度目标，返回轮速／状态；定义校验和超时。'],
+['D06','mcu','driver','data','PWM / DIR / EN','四路独立控制及使能，具体信号形式按驱动手册；若需逻辑电源由 P08 支路提供。'],
+['D07','imu','mcu','data','I²C 或 SPI','双向总线，含公共地；模块供电和上拉电压按实际型号。'],
+['D08','mac','opi','debug','Wi-Fi / SSH','同一局域网；仅开发、日志与低帧率预览，不传实时运动闭环。'],
+['D09','mac','debug','debug','USB 调试','适配器由 Mac USB 供电。'],
+['D10','debug','opi','debug','独立 UART-DBG / 可选','只接 TX/RX/GND；VCC 不接。调试 UART 不得与 D05 占用同一通道。'],
+['D11','estop','mcu','data','辅助触点状态','读取急停状态；硬件切断独立于软件工作。辅助触点接口需按控制器电平设计。'],
+['P01','battery','fuse','power','电池正极 → 保险 → 总开关','负极至配电公共地；保险丝靠近电池，规格按电机、电源和线材定。'],
+['P02','fuse','buck','power','电子设备支路','输入电压须覆盖电池满充及工作范围；急停后可保留逻辑供电。'],
+['P03','fuse','estop','power','动力支路 → 切断执行器','通过接触器或合适的安全切断电路，不以普通按钮直接承载电机大电流。'],
+['P04','estop','driver','power','切断执行器 → 驱动 VM','驱动动力负极返回配电地；急停需按车辆惯性与制动策略设计。'],
+['P05','buck','opi','power','稳定 5V → Type-C 供电口','按板子 5V/3A 要求预留容量；电机／相机的负载不应挤占主板供电预算。'],
+['P06','buck','hub','power','集线器独立电源输入','输出电压和插头按所选集线器；防止向主板 USB 上游反灌，按相机峰值电流选型。'],
+['P07','buck','lidar','power','稳定 5V → 雷达电源','雷达地接配电公共地，并与其适配器信号地连接；若配套转接板供电，避免重复并联电源。'],
+['P08','buck','mcu','power','控制器所需稳压电源','电压按控制板选择，不直接给 MCU 芯片接 5V；驱动逻辑电源如需要，从匹配支路分出。'],
+['P09','mcu','imu','power','匹配的传感器稳压电源','假设控制板具备合适稳压输出；否则使用单独稳压器，不由 GPIO 供电。'],
+['P10','buck','fan','power','风扇额定电源','先确认额定电压；也可使用经核对的主板风扇接口。'],
+['P11','buck','driver','power','驱动逻辑电源（按需）','仅当驱动器需要独立逻辑电源时接入，电压按手册；带内部逻辑稳压的模块不可重复并联供电。']
+];
+for(let i=0;i<wheelDefs.length;i++){
+ const id=wheelDefs[i][0],name=wheelDefs[i][1];
+ // 添加电机双线功率输出以及编码器供电／反馈线束。
+ edges.push(['M0'+(i+1),'driver',id,'motor',name+'电机 M+/M−','对应独立 H 桥通道，不直接接香橙派 GPIO；功率回路归入动力支路。']);
+ // 编码器线束必须包含信号参考地及匹配电源，而不仅是 A/B 两根线。
+ edges.push(['E0'+(i+1),id,'mcu','feedback',name+'编码器 A/B + VCC/GND','供电由控制板匹配电源提供，A/B 反馈至控制器；若为开集电极，按手册配置上拉。']);
+}
+// 保存显式三维视角与选择状态，不依赖外部三维库或网络。
+let yaw=-0.58,pitch=0.66,zoom=1,expanded=false,layer='all',selected='opi',drag=null,moved=false;
+const palette={data:'#47daeb',power:'#ffaf66',motor:'#91e5b0',feedback:'#91e5b0',debug:'#c6acff'};
+// 按 ID 建立部件索引以便同步查询图形和表格。
+const byId=Object.fromEntries(nodes.map(n=>[n.id,n]));
+// 获取固定的页面容器。
+const svg=document.getElementById('scene'),parts=document.getElementById('parts');
+// 根据分层模式调整显示高度；原始坐标不被修改。
+function position(n){let d=0;if(expanded){if(n.group==='compute')d=80;if(n.group==='control')d=55;if(n.group==='sense')d=105;if(n.group==='catch')d=150;}return [n.p[0],n.p[1],n.p[2]+d];}
+// 将空间点旋转并正交投影到 SVG 画布，返回屏幕位置及深度。
+function project(p){
+ // 三角函数用于绕竖轴和俯仰轴旋转，保持真实空间关系。
+ const c=Math.cos(yaw),s=Math.sin(yaw),a=Math.cos(pitch),b=Math.sin(pitch);
+ const x=p[0]*c-p[1]*s,y=p[0]*s+p[1]*c;
+ return [620+x*1.42*zoom,485+(-y*b-p[2]*a)*1.42*zoom,y*a-p[2]*b];
+}
+// 建立 SVG 元素；属性仅来自受控数据，不接受外部 HTML。
+function el(tag,attrs={},text=''){
+ // 采用 SVG 命名空间保证本地文件也能正确渲染。
+ const item=document.createElementNS('http://www.w3.org/2000/svg',tag);
+ // 将受控样式和几何属性写入 SVG 元素。
+ for(const key in attrs)item.setAttribute(key,attrs[key]);
+ if(text)item.textContent=text;
+ return item;
+}
+// 把三维点列转换为 SVG 折线坐标。
+function pts(list){
+ // 对每个顶点应用当前视角，再拼接为标准 SVG 点列。
+ return list.map(p=>project(p).slice(0,2).join(',')).join(' ');
+}
+// 绘制单个长方体并按深度安排可见面；返回可附加的分组。
+function box(n){
+ // 使用分层后的部件中心坐标。
+ const p=position(n),s=n.s,g=el('g',{'data-node':n.id});
+ const v=[];
+ for(const z of [-.5,.5])for(const y of [-.5,.5])for(const x of [-.5,.5])v.push([p[0]+x*s[0],p[1]+y*s[1],p[2]+z*s[2]]);
+ const faces=[[0,1,3,2],[0,1,5,4],[1,3,7,5],[3,2,6,7],[2,0,4,6],[4,5,7,6]];
+ // 计算面深度并从后向前绘制，产生可旋转的立体遮挡。
+ faces.sort((a,b)=>b.reduce((r,i)=>r+project(v[i])[2],0)-a.reduce((r,i)=>r+project(v[i])[2],0));
+ for(const f of faces){
+ // 面顶点转换后绘制边框；网篮采用透明材质表现空心结构。
+ g.appendChild(el('polygon',{points:pts(f.map(i=>v[i])),fill:n.c,opacity:n.shape==='basket'?.12:.9,stroke:selected===n.id?'#f3fbff':'#98b5d0','stroke-width':selected===n.id?1.8:.65}));
+ }
+ if(n.shape==='basket'){
+ for(let i=1;i<6;i++){
+ const x=p[0]-s[0]/2+s[0]*i/6,y=p[1]-s[1]/2+s[1]*i/6;
+ // 绘制网篮底网和侧面网线，避免误认成封闭箱体。
+ g.appendChild(el('polyline',{points:pts([[x,p[1]-s[1]/2,p[2]+s[2]/2],[x,p[1]-s[1]/2,p[2]-s[2]/2],[x,p[1]+s[1]/2,p[2]-s[2]/2],[x,p[1]+s[1]/2,p[2]+s[2]/2]]),fill:'none',stroke:'#92c0d5','stroke-width':.8}));
+ g.appendChild(el('polyline',{points:pts([[p[0]-s[0]/2,y,p[2]-s[2]/2],[p[0]+s[0]/2,y,p[2]-s[2]/2]]),stroke:'#92c0d5','stroke-width':.8}));
+ }
+ }
+ if(n.shape==='wheel')for(let i=-2;i<=2;i++){
+ // 用斜线表示麦克纳姆滚子，仅是机构概念而非加工角度图。
+ g.appendChild(el('polyline',{points:pts([[p[0]-s[0]/2,p[1]+i*11-8,p[2]+s[2]/2+1],[p[0]+s[0]/2,p[1]+i*11+8,p[2]+s[2]/2+1]]),stroke:'#9eafc2','stroke-width':4}));
+ }
+ if(n.id==='cam'){
+ // 在摄像头前面添加光学镜头示意。
+ const q=project([p[0],p[1]+s[1]/2,p[2]]);
+ g.appendChild(el('circle',{cx:q[0],cy:q[1],r:12*zoom,fill:'#071620',stroke:'#8de8f3','stroke-width':3}));
+ }
+ if(n.id==='lidar'||n.id==='estop'){
+ // 用顶面椭圆表现旋转雷达盖和急停按钮。
+ const q=project([p[0],p[1],p[2]+s[2]/2]);
+ g.appendChild(el('ellipse',{cx:q[0],cy:q[1],rx:s[0]*.6*zoom,ry:s[1]*.3*zoom,fill:n.id==='estop'?'#f15b5c':'#152437',stroke:'#a3b5c9'}));
+ }
+ return g;
+}
+// 根据选择的图层决定连线可见性。
+function enabled(e){return layer==='all'||(layer==='power'?(e[3]==='power'||e[3]==='motor'):(e[3]!=='power'&&e[3]!=='motor'));}
+// 重绘场景：底盘、器件、连线、标注及球的示意轨迹。
+function render(){
+ // 清除旧投影后重新绘制，保证交互视角一致。
+ svg.replaceChildren();
+ for(let k=-400;k<=300;k+=50){
+ // 地面网格提供空间尺度感，但不代表物理尺寸。
+ svg.appendChild(el('polyline',{points:pts([[k,-210,-18],[k,250,-18]]),stroke:'#243a50','stroke-width':.6,fill:'none'}));
+ svg.appendChild(el('polyline',{points:pts([[-400,k,-18],[300,k,-18]]),stroke:'#243a50','stroke-width':.6,fill:'none'}));
+ }
+ // 渲染薄底盘与上层安装板。
+ svg.appendChild(box({id:'chassis',p:[0,0,-5],s:[295,270,9],c:'#334457',group:'base'}));
+ svg.appendChild(box({id:'deck',p:[0,0,65],s:[275,250,5],c:'#1d334a',group:'base'}));
+ // 从远到近绘制器件，保持旋转后的遮挡顺序。
+ const sorted=[...nodes].sort((a,b)=>project(position(b))[2]-project(position(a))[2]);
+ for(const n of sorted)svg.appendChild(box(n));
+ // 连线作为透视线路覆盖层，便于查看被上层板遮挡的信号路径。
+ for(const e of edges){
+ if(!enabled(e))continue;
+ const a=position(byId[e[1]]),b=position(byId[e[2]]),focus=!selected||selected===e[1]||selected===e[2];
+ const z=Math.max(a[2],b[2])+12,mid=[(a[0]+b[0])/2,(a[1]+b[1])/2,z];
+ const path=el('polyline',{points:pts([a,[a[0],a[1],z],mid,[b[0],b[1],z],b]),stroke:palette[e[3]],'stroke-width':focus?2.8:1.3,opacity:focus?.95:.15,fill:'none','stroke-dasharray':e[3]==='debug'?'6 5':'none','pointer-events':'none'});
+ svg.appendChild(path);
+ if(focus){const q=project(mid);svg.appendChild(el('text',{x:q[0],y:q[1]-6,fill:palette[e[3]],'font-size':11,'font-weight':700,stroke:'#0a1523','stroke-width':3,'paint-order':'stroke'},e[0]));}
+ }
+ // 标记球的来向，仅演示摄像头观察与接球篮之间的空间关系。
+ const flight=[[10,220,245],[15,160,245],[15,95,230],[15,24,210]];
+ svg.appendChild(el('polyline',{points:pts(flight),stroke:'#ffd37c','stroke-width':1.8,'stroke-dasharray':'5 7',fill:'none',opacity:.7}));
+ const ball=project(flight[0]);
+ svg.appendChild(el('circle',{cx:ball[0],cy:ball[1],r:9*zoom,fill:'#ffb855',stroke:'#ffe4af','stroke-width':2}));
+ svg.appendChild(el('text',{x:ball[0]+15,y:ball[1]-7,fill:'#f3ca8c','font-size':12},'来球方向（示意）'));
+ // 短标签分左右布置，避免覆盖主体部件；细引线指向投影中心。
+ const labels=nodes.map(n=>({n,q:project(position(n))}));
+ const left=labels.filter(t=>t.q[0]<620),right=labels.filter(t=>t.q[0]>=620);
+ for(const [items,x,anchor] of [[left,175,'end'],[right,1000,'start']]){
+ items.sort((a,b)=>a.q[1]-b.q[1]);
+ let next=100;
+ for(let i=0;i<items.length;i++){
+ const {n,q}=items[i];
+ const y=Math.max(next,Math.min(650-(items.length-i-1)*32,q[1]));next=y+32;
+ const active=n.id===selected,g=el('g',{'data-node':n.id,style:'cursor:pointer'});
+ g.appendChild(el('polyline',{points:`${q[0]},${q[1]} ${x+(anchor==='end'?16:-16)},${y-4} ${x},${y-4}`,stroke:active?'#edfaff':'#527086','stroke-width':active?1.3:.7,opacity:active?1:.55,fill:'none'}));
+ g.appendChild(el('text',{x,y,fill:active?'#fff':'#bbd0e1','font-size':13,'font-weight':active?700:500,'text-anchor':anchor,stroke:'#0d1725','stroke-width':5,'paint-order':'stroke'},n.short));
+ svg.appendChild(g);
+ }
+ }
+ // 标注车头坐标方向，辅助理解麦克纳姆底盘的前后轮位。
+ const front=project([0,170,-15]);
+ svg.appendChild(el('text',{x:front[0],y:front[1]+25,fill:'#7c9bb4','font-size':13,'text-anchor':'middle'},'车头 / +Y'));
+}
+// 切换选中器件并同步详情，保证键盘选择与点击选择效果相同。
+function choose(id){
+ selected=id;const n=byId[id];
+ document.getElementById('detailId').textContent=n.short;
+ document.getElementById('detailTitle').textContent=n.name;
+ document.getElementById('detailText').textContent=n.desc;
+ const container=document.getElementById('detailLinks');container.replaceChildren();
+ for(const e of edges){if(e[1]!==id&&e[2]!==id)continue;
+ // 使用文字节点填充详情，避免依赖 HTML 字符串解析。
+ const item=document.createElement('div');item.className='detail-line';
+ item.textContent=e[0]+' · '+byId[e[1]].name+' ↔ '+byId[e[2]].name+' ｜ '+e[4];container.appendChild(item);
+ }
+ parts.value=id;render();
+}
+// 构造可打印的完整连接表，不将工程细节仅藏在点击弹窗中。
+function buildTables(){
+ for(const n of nodes){const o=document.createElement('option');o.value=n.id;o.textContent=n.short;parts.appendChild(o);}
+ for(const e of edges){
+ const power=e[3]==='power'||e[3]==='motor';
+ const tr=document.createElement('tr'),cells=power?[e[0],byId[e[1]].name+' → '+byId[e[2]].name+' / '+e[4],e[5]]:[e[0],byId[e[1]].name+' ↔ '+byId[e[2]].name,e[4],e[5]];
+ for(const content of cells){const td=document.createElement('td');td.textContent=content;tr.appendChild(td);}
+ document.getElementById(power?'powerRows':'dataRows').appendChild(tr);
+ }
+}
+// 绑定图层按钮，实时改变线路显隐，不修改连接清单。
+for(const button of document.querySelectorAll('[data-layer]'))button.addEventListener('click',()=>{
+ layer=button.dataset.layer;for(const b of document.querySelectorAll('[data-layer]'))b.classList.toggle('active',b===button);render();
+});
+// 绑定部件下拉列表，提供无需指针的详情访问方式。
+parts.addEventListener('change',()=>choose(parts.value));
+// 绑定展开模式，显示底层供电与电机模块。
+document.getElementById('explode').addEventListener('click',e=>{expanded=!expanded;e.currentTarget.setAttribute('aria-pressed',expanded);e.currentTarget.textContent=expanded?'收拢部件':'展开部件';render();});
+// 俯视与复位采用固定视角，方便查看轮位及回到初始状态。
+document.getElementById('top').addEventListener('click',()=>{pitch=1.48;yaw=0;render();});
+document.getElementById('reset').addEventListener('click',()=>{yaw=-.58;pitch=.66;zoom=1;expanded=false;document.getElementById('explode').textContent='展开部件';document.getElementById('explode').setAttribute('aria-pressed','false');choose('opi');});
+// 捕获拖动起点与原始器件目标，避免拖拽被当成单击。
+svg.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY,id:e.target.closest('[data-node]')?.dataset.node};moved=false;svg.setPointerCapture(e.pointerId);});
+// 根据指针位移调整方位与俯仰；限制极端角度以保持标签可读。
+svg.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>2)moved=true;yaw+=dx*.006;pitch=Math.max(.15,Math.min(1.5,pitch+dy*.006));drag.x=e.clientX;drag.y=e.clientY;render();});
+// 结束拖动，仅在未移动时选择有效部件。
+svg.addEventListener('pointerup',()=>{if(drag&&!moved&&byId[drag.id])choose(drag.id);drag=null;});
+svg.addEventListener('pointercancel',()=>{drag=null;});
+// 滚轮缩放仅影响图形，不改变部件坐标和工程含义。
+svg.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.55,Math.min(1.7,zoom-e.deltaY*.001));render();},{passive:false});
+// 键盘提供旋转和缩放，避免只支持鼠标操作。
+svg.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','='].includes(e.key))return;e.preventDefault();if(e.key==='ArrowLeft')yaw-=.1;if(e.key==='ArrowRight')yaw+=.1;if(e.key==='ArrowUp')pitch=Math.min(1.5,pitch+.1);if(e.key==='ArrowDown')pitch=Math.max(.15,pitch-.1);if(e.key==='+'||e.key==='=')zoom=Math.min(1.7,zoom+.1);if(e.key==='-')zoom=Math.max(.55,zoom-.1);render();});
+// 导出当前投影为独立 SVG，保留线路颜色并添加深色背景。
+document.getElementById('export').addEventListener('click',()=>{
+ const copy=svg.cloneNode(true);copy.setAttribute('xmlns','http://www.w3.org/2000/svg');copy.setAttribute('width','1100');copy.setAttribute('height','760');
+ const bg=el('rect',{width:1100,height:760,fill:'#0d1725'});copy.insertBefore(bg,copy.firstChild);
+ const text=new XMLSerializer().serializeToString(copy),url=URL.createObjectURL(new Blob([text],{type:'image/svg+xml'}));
+ const a=document.createElement('a');a.href=url;a.download='接球小车-当前视角.svg';a.click();
+ // 延迟释放下载资源，避免浏览器尚未消费 URL 时失效。
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+});
+// 首次装载生成连接表，并突出核心计算板。
+buildTables();choose('opi');
+</script></body></html>

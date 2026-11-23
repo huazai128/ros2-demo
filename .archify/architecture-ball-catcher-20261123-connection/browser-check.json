@@ -1,0 +1,24 @@
+{
+  "basic": {
+    "title": "接球小车 · 3D 系统连接图",
+    "nodes": 20,
+    "edges": 30,
+    "badEdges": [],
+    "duplicates": 0,
+    "dataRows": 15,
+    "powerRows": 15,
+    "svgElements": 316,
+    "overflow": false
+  },
+  "interaction": {
+    "power": true,
+    "expanded": true,
+    "top": true,
+    "reset": true
+  },
+  "mobile": {
+    "overflow": false,
+    "svgWidth": 364
+  },
+  "errors": []
+}
