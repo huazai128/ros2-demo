@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "3261e512-91a6-4a3f-a840-6a8f4000c1eb",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/JOYY/Downloads/AI/ros2-demo/.archify/architecture-car-uart-20261126-130000/candidate.json",
+  "output": "/Users/JOYY/Downloads/AI/ros2-demo/.archify/architecture-car-uart-20261126-130000/car-uart.html",
+  "specification": {
+    "sha256": "961952d3473c150d11974314ea5a5bc671c5e768c8117ef2478056abe9db36b9",
+    "bytes": 4218
+  },
+  "artifact": {
+    "sha256": "ad19f1814e16cac136be059003b1edc53fd031532c18d065dc62b009b9d0b332",
+    "bytes": 838818
+  }
+}

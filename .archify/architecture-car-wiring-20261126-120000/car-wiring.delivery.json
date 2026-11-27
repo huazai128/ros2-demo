@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "b809fb61-f596-4149-a26a-a3abfaada5f1",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/JOYY/Downloads/AI/ros2-demo/.archify/architecture-car-wiring-20261126-120000/candidate.json",
+  "output": "/Users/JOYY/Downloads/AI/ros2-demo/.archify/architecture-car-wiring-20261126-120000/car-wiring.html",
+  "specification": {
+    "sha256": "09e4370a37035f47e75c0c5ebc114dd41969766ac17f7fd049d0c16a55e61a0a",
+    "bytes": 3144
+  },
+  "artifact": {
+    "sha256": "e36dee0042e0d140309ecb242f39841a44e75f64a053e238eea453b8644c3a50",
+    "bytes": 841646
+  }
+}

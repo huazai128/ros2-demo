@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "小车连接方案：摄像头 USB，其余 UART / I²C",
+    "locale": "zh-CN",
+    "output": ".archify/architecture-car-uart-20261126-130000/car-uart.html",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "camera",
+      "type": "external",
+      "label": "AR0234 USB 摄像头",
+      "sublabel": "唯一 USB 数据外设",
+      "pos": [
+        40,
+        40
+      ],
+      "size": [
+        210,
+        70
+      ]
+    },
+    {
+      "id": "opi",
+      "type": "backend",
+      "label": "Orange Pi Zero 3W",
+      "sublabel": "ROS2 / 独立硬件 UART 待核对",
+      "pos": [
+        40,
+        260
+      ],
+      "size": [
+        230,
+        80
+      ]
+    },
+    {
+      "id": "stm",
+      "type": "backend",
+      "label": "STM32 底盘板",
+      "sublabel": "运动指令 / 编码器状态",
+      "pos": [
+        460,
+        260
+      ],
+      "size": [
+        210,
+        80
+      ]
+    },
+    {
+      "id": "motor",
+      "type": "backend",
+      "label": "电机驱动与电机",
+      "sublabel": "编码器接回 STM32",
+      "pos": [
+        850,
+        260
+      ],
+      "size": [
+        200,
+        80
+      ]
+    },
+    {
+      "id": "esp",
+      "type": "backend",
+      "label": "ESP32-S3",
+      "sublabel": "汇集 IMU 与雷达数据",
+      "pos": [
+        40,
+        510
+      ],
+      "size": [
+        230,
+        80
+      ]
+    },
+    {
+      "id": "imu",
+      "type": "external",
+      "label": "BNO080 模块",
+      "sublabel": "电平 / 模式 / 供电需核对",
+      "pos": [
+        460,
+        510
+      ],
+      "size": [
+        210,
+        80
+      ]
+    },
+    {
+      "id": "lidar",
+      "type": "external",
+      "label": "LD14 / LD14P",
+      "sublabel": "原始串口经 ESP32 转发",
+      "pos": [
+        40,
+        750
+      ],
+      "size": [
+        230,
+        80
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "cam-pi",
+      "from": "camera",
+      "to": "opi",
+      "label": "USB"
+    },
+    {
+      "id": "pi-stm",
+      "from": "opi",
+      "to": "stm",
+      "label": "独立 UART A：TX / RX / GND"
+    },
+    {
+      "id": "stm-motor",
+      "from": "stm",
+      "to": "motor",
+      "label": "PWM / 方向 / 编码器"
+    },
+    {
+      "id": "pi-esp",
+      "from": "opi",
+      "to": "esp",
+      "label": "独立 UART B：TX / RX / GND"
+    },
+    {
+      "id": "esp-imu",
+      "from": "esp",
+      "to": "imu",
+      "label": "I²C + INT / RST"
+    },
+    {
+      "id": "lidar-esp",
+      "from": "lidar",
+      "to": "esp",
+      "label": "独立 UART：雷达数据"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "减少香橙派 UART 占用",
+      "items": [
+        "建议 ESP32-S3 同时采集 IMU 和雷达，只占香橙派一路 UART；STM32 单独占另一路。",
+        "UART A / B 是逻辑编号，不是硬件端口名或针脚号；须确认两路可同时引出、使能且无复用冲突。",
+        "各段 UART 交叉 TX/RX 并共地，不可把多个 TX 接在一起；雷达是否需要 RX 以型号协议为准。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "软件需要新增桥接",
+      "items": [
+        "ESP32 需要雷达接收、IMU 采集、分帧、校验、时间戳及串口转发固件。",
+        "香橙派需解复用程序，不能直接把混合数据交给现有雷达驱动。",
+        "上行串口吞吐需覆盖雷达和 IMU 加封装开销；波特率通过测试决定。",
+        "如果香橙派有第三路可用 UART，雷达可直连该路，保留现有驱动数据格式。"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "供电不走细杜邦线",
+      "items": [
+        "此图为通信拓扑；电源正极不随通信线直接互接。",
+        "香橙派保留独立稳定 5V Type-C 供电；电机及开发板电源按规格独立分配。",
+        "BNO080 和雷达供电及串口信号电压必须分别核对，必要时加电平转换。",
+        "杜邦线适合短距离低电流原型信号连接；正式装车用锁紧接插件并远离电机线。"
+      ]
+    }
+  ]
+}

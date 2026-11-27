@@ -1,0 +1,28 @@
+{
+ "schema_version":1,"diagram_type":"architecture",
+ "meta":{"title":"小车通信连接建议（非针脚接线图）","locale":"zh-CN","output":".archify/architecture-car-wiring-20261126-120000/car-wiring.html","quality_profile":"showcase"},
+ "components":[
+ {"id":"camera","type":"external","label":"AR0234 摄像头","sublabel":"假设为 USB 成品模块","pos":[40,40],"size":[190,70]},
+ {"id":"lidar","type":"external","label":"LD14 / LD14P","sublabel":"雷达 + 匹配 USB 转接板","pos":[390,40],"size":[190,70]},
+ {"id":"hub","type":"messagebus","label":"USB 集线器","sublabel":"按外设电流选供电方案","pos":[390,240],"size":[190,80]},
+ {"id":"opi","type":"backend","label":"Orange Pi Zero 3W","sublabel":"Ubuntu / ROS2 / 感知决策","pos":[40,240],"size":[210,80]},
+ {"id":"stm","type":"backend","label":"STM32 底盘控制板","sublabel":"USB 串口桥或外置转接器","pos":[800,240],"size":[220,80]},
+ {"id":"motor","type":"backend","label":"电机驱动与电机","sublabel":"编码器反馈回 STM32","pos":[800,470],"size":[220,80]},
+ {"id":"esp","type":"backend","label":"ESP32-S3 开发板","sublabel":"自定义固件：IMU 采集","pos":[390,470],"size":[210,80]},
+ {"id":"imu","type":"external","label":"BNO080 IMU 模块","sublabel":"确认供电与接口模式","pos":[40,470],"size":[210,80]}
+ ],
+ "connections":[
+ {"id":"c-h","from":"camera","to":"hub","label":"USB 视频"},
+ {"id":"l-h","from":"lidar","to":"hub","label":"USB 串口"},
+ {"id":"o-h","from":"opi","to":"hub","label":"USB Host"},
+ {"id":"h-s","from":"hub","to":"stm","label":"速度指令 / 状态反馈"},
+ {"id":"s-m","from":"stm","to":"motor","label":"PWM / 方向 / 编码器"},
+ {"id":"h-e","from":"hub","to":"esp","label":"USB CDC 或 USB 串口桥"},
+ {"id":"i-e","from":"imu","to":"esp","label":"I²C + INT / RST"}
+ ],
+ "cards":[
+ {"dot":"cyan","title":"线表示通信连接","items":["箭头用于组织拓扑；USB、I²C、串口通信可双向。","SEP32-S3 暂按 ESP32-S3 理解；AR0234 若为 MIPI 模块，此 USB 路径不适用。","STM32 只有板载 USB 串口桥可用时才直接接 USB；否则加匹配电平的转接器。"]},
+ {"dot":"emerald","title":"供电独立规划","items":["电池经匹配的稳压模块给香橙派 Type-C 提供稳定 5V；板端按手册 3A 基线，外设另核总预算。","电机与 STM32 按底盘电源规格供电，不从 STM32 的 3.3V / GPIO 给香橙派供电。","ESP32 开发板可按板卡设计由 USB 供电；IMU 供电按模块规格，I²C 信号使用匹配电平。","避免供电集线器向香橙派上游反向供电；电机大电流使用独立回路，通信按接口要求共地。"]},
+ {"dot":"rose","title":"上电前待确认","items":["确认 STM32、ESP32-S3、BNO080 模块完整型号和排针定义，不依据芯片名猜针脚。","LD14 与 LD14P 的驱动型号及波特率不同；以铭牌和手册为准。","ESP32 采集与 ROS2 接收桥需要实现；/imu/data 为建议话题，当前接线不等于软件已支持。","只有 STM32 接收最终运动命令；先验证零指令和通信超时停车，再联调车轮。"]}
+ ]
+}

@@ -1,0 +1,7 @@
+1、酷点机器人编码器电机入门资料：（提供PID图形化调试助手）
+V2.0酷点机器人编码器电机资料链接：https://pan.baidu.com/s/1jmZJX-WbZa8TLDua1QLs5Q 
+提取码：dp2i
+
+2、酷点机器人逸群32主板资料：（支持小车巡线、遥控等的7种模式控制）
+酷点32逸群控制板资料链接：https://pan.baidu.com/s/1QE9VIlpAXih17DEDe9zIKA 
+提取码：vmgw
